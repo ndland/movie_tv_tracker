@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page renders 1`] = `
+<div>
+  <div
+    class="flex flex-col p-2"
+  >
+    <div
+      class="flex flex-col -space-y-px shadow-sm"
+    >
+      <h2
+        class="text-3xl font-extrabold mb-4 self-center text-slate-600"
+      >
+        Login
+      </h2>
+      <label
+        class="sr-only"
+        for="username"
+      >
+        Username
+      </label>
+      <input
+        aria-label="username"
+        class="border p-2 rounded-t-md"
+        placeholder="Username"
+        type="text"
+      />
+      <label
+        class="sr-only"
+        for="password"
+      >
+        Password
+      </label>
+      <input
+        aria-label="password"
+        class="border p-2 rounded-b-md"
+        placeholder="Password"
+        type="password"
+      />
+    </div>
+    <button
+      class="text-white text-xl font-bold bg-slate-600 p-2 rounded-md mt-4"
+    >
+      Login
+    </button>
+  </div>
+</div>
+`;
