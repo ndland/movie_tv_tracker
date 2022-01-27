@@ -1,4 +1,6 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { SocialButton } from '../components/SocialButton/SocialButton';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default function Home() {
   const { data: session } = useSession();
@@ -20,9 +22,12 @@ export default function Home() {
   return (
     <>
       Not signed in <br />
-      <button className="login" onClick={() => signIn('github')}>
-        Sign in
-      </button>
+      <SocialButton
+        socialPlatform="Github"
+        icon={faGithub}
+        altText="Github Icon"
+        onClick={() => signIn('github')}
+      />
     </>
   );
 }
