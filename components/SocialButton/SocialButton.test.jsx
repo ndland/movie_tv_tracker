@@ -14,13 +14,14 @@ describe('Social Button', () => {
         icon={faGithub}
         altText="Github Icon"
         onClick={onClick}
+        className="bg-slate-500"
       />
     );
   });
 
   it('should be a button', () => {
     expect(
-      screen.getByRole('heading', { name: /social button/i })
+      screen.getByRole('button', { name: /social button/i })
     ).toBeInTheDocument();
   });
 
@@ -33,10 +34,13 @@ describe('Social Button', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  // TODO: figure out why it's not seeing the onClick called
   it("should trigger an 'onClick' event handler when the button is clicked", () => {
     userEvent.click(screen.getByRole('button'));
 
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should take in a class prop to dynamically style the button', () => {
+    expect(screen.getByRole('button')).toHaveClass('bg-slate-500');
   });
 });
