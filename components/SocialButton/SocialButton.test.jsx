@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { SocialButton } from './SocialButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import userEvent from '@testing-library/user-event';
 
@@ -11,8 +12,7 @@ describe('Social Button', () => {
     render(
       <SocialButton
         socialPlatform="Github"
-        icon={faGithub}
-        altText="Github Icon"
+        Icon={<FontAwesomeIcon icon={faGithub} alt="Github Icon" inverse />}
         onClick={onClick}
         className="bg-slate-500"
       />
@@ -29,9 +29,10 @@ describe('Social Button', () => {
     expect(screen.getByText(/github/i)).toBeInTheDocument();
   });
 
-  // TODO: This isn't able to find an 'img' tag yet, come back and fix it
-  it.skip('should render an image of the socal platform', () => {
-    expect(screen.getByRole('img')).toBeInTheDocument();
+  it('should render an image of the socal platform', () => {
+    waitFor(() => {
+      expect(screen.findByAltText(/github icon/i)).toBeInTheDocument();
+    });
   });
 
   it("should trigger an 'onClick' event handler when the button is clicked", () => {
