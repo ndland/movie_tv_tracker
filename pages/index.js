@@ -10,7 +10,7 @@ export default function Home() {
       <>
         Signed in as {session.user.email} <br />
         <img
-          className="rounded-full"
+          className="rounded-full w-48"
           src={session.user.image}
           alt="User image"
         />
