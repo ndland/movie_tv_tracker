@@ -13,7 +13,7 @@ const Template = (args) => <SocialButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  textClass: 'text-white',
+  textColor: 'text-white',
   buttonText: 'Sign in with Github!',
   buttonColor: 'bg-neutral-800',
   Icon: <FontAwesomeIcon icon={faGithub} alt="Github Icon" inverse />,
