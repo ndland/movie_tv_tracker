@@ -11,10 +11,11 @@ describe('Social Button', () => {
   beforeEach(() => {
     render(
       <SocialButton
-        socialPlatform="Github"
+        textColor="text-white"
+        buttonText="Sign in with Github!"
+        buttonColor="bg-slate-500"
         Icon={<FontAwesomeIcon icon={faGithub} alt="Github Icon" inverse />}
         onClick={onClick}
-        className="bg-slate-500"
       />
     );
   });

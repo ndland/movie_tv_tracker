@@ -1,6 +1,6 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { SocialButton } from '../components/SocialButton/SocialButton';
-import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Home() {
@@ -27,10 +27,11 @@ export default function Home() {
           Not signed in <br />
         </span>
         <SocialButton
-          socialPlatform="Sign in with Github!"
+          textColor="text-white"
+          buttonText="Sign in with Github!"
+          buttonColor="bg-neutral-800"
           Icon={<FontAwesomeIcon icon={faGithub} alt="Github Icon" inverse />}
           onClick={() => signIn('github')}
-          className="bg-neutral-800 rounded-md drop-shadow-lg w-fit"
         />
       </div>
     </div>

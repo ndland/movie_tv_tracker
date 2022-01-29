@@ -13,16 +13,18 @@ const Template = (args) => <SocialButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  socialPlatform: 'Sign into Github!',
+  textClass: 'text-white',
+  buttonText: 'Sign in with Github!',
+  buttonColor: 'bg-neutral-800',
   Icon: <FontAwesomeIcon icon={faGithub} alt="Github Icon" inverse />,
   onclick: () => console.log(),
-  className: 'bg-neutral-800 rounded-md drop-shadow-lg w-fit',
 };
 
 export const Google = Template.bind({});
 Google.args = {
-  socialPlatform: 'Sign into Google!',
+  textColor: 'text-white',
+  buttonText: 'Sign in with Google!',
+  buttonColor: 'bg-blue-600',
   Icon: <FontAwesomeIcon icon={faGoogle} alt="Google Icon" inverse />,
   onclick: () => console.log(),
-  className: 'bg-blue-600 rounded-md drop-shadow-lg w-fit',
 };
