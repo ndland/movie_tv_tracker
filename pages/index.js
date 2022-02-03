@@ -7,17 +7,21 @@ export default function Home() {
   const { data: session } = useSession();
   if (session) {
     return (
-      <>
-        Signed in as {session.user.email} <br />
-        <img
-          className="rounded-full w-48"
-          src={session.user.image}
-          alt="User image"
-        />
-        <button className="unread-count" onClick={() => signOut()}>
+      <div className="flex flex-row w-full p-2 justify-between">
+        <div className="flex flex-row px-2 space-x-4 justify-between">
+          <img
+            className="rounded-full w-16"
+            src={session.user.image}
+            alt="User image"
+          />
+          <h2 className="font-bold text-lg self-center">
+            {session.user.email}
+          </h2>
+        </div>
+        <button className="px-2" onClick={() => signOut()}>
           Sign out
         </button>
-      </>
+      </div>
     );
   }
   return (
