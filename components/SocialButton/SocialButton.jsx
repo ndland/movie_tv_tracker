@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SocialButton = ({
+const SocialButton = ({
   textColor,
   buttonText,
   buttonColor,
@@ -20,3 +20,5 @@ export const SocialButton = ({
     </button>
   );
 };
+
+export default SocialButton;
