@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Home() {
   const { data: session } = useSession();
+
   if (session) {
     return <Header onClick={() => signOut()} session={session} />;
   }
+
   return (
     <div className="flex flex-col h-screen">
       <h3 className="flex-none text-center text-lg sm:text-3xl p-4 font-bold text-slate-700">
