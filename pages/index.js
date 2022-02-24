@@ -1,25 +1,16 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { SocialButton } from '../components/SocialButton/SocialButton';
+import SocialButton from '../components/SocialButton/SocialButton';
+import Header from '../components/Header/Header';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Home() {
   const { data: session } = useSession();
+
   if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <img
-          className="rounded-full w-48"
-          src={session.user.image}
-          alt="User image"
-        />
-        <button className="unread-count" onClick={() => signOut()}>
-          Sign out
-        </button>
-      </>
-    );
+    return <Header onClick={() => signOut()} session={session} />;
   }
+
   return (
     <div className="flex flex-col h-screen">
       <h3 className="flex-none text-center text-lg sm:text-3xl p-4 font-bold text-slate-700">

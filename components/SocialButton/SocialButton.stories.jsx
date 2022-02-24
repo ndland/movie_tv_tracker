@@ -1,8 +1,7 @@
+import React from 'react';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-
-import { SocialButton } from './SocialButton';
+import SocialButton from './SocialButton';
 
 export default {
   component: SocialButton,
