@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { SessionProvider } from 'next-auth/react';
 import Header from './Header';
 
 const onClick = jest.fn();
@@ -12,7 +13,11 @@ const session = {
 
 describe('Header', () => {
   beforeEach(() => {
-    render(<Header onClick={onClick} session={session} />);
+    render(
+      <SessionProvider session={session}>
+        <Header onClick={onClick} />
+      </SessionProvider>
+    );
   });
 
   it('renders', () => {
