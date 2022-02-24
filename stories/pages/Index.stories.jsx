@@ -1,14 +1,14 @@
 import { SessionProvider } from 'next-auth/react';
-import Home from '../../pages/index';
+import Index from '../../pages/index';
 
 export default {
-  title: 'Pages/Home',
-  component: Home,
+  title: 'Pages/Index',
+  component: Index,
 };
 
 export const HomePageNotLoggedIn = () => (
   <SessionProvider session={null}>
-    <Home />
+    <Index />
   </SessionProvider>
 );
 
@@ -22,6 +22,6 @@ export const HomePageLoggedIn = () => (
       },
     }}
   >
-    <Home />
+    <Index />
   </SessionProvider>
 );
