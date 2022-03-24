@@ -1,15 +1,17 @@
 import Image from 'next/image';
 
-const Poster = () => (
-  <div className="relative w-48 h-64">
-    <Image
-      alt="image"
-      aria-label="image"
-      src="https://m.media-amazon.com/images/I/610fuvWAaqL._AC_SL1039_.jpg"
-      objectFit="cover"
-      layout="fill"
-    />
-  </div>
-);
+const Poster = ({ info: { results } }) => {
+  return (
+    <div className="relative w-48 h-64">
+      <Image
+        alt="image"
+        aria-label={`${results[0].original_title}`}
+        src={`https://image.tmdb.org/t/p/original${results[0].poster_path}`}
+        objectFit="cover"
+        layout="fill"
+      />
+    </div>
+  );
+};
 
 export default Poster;
