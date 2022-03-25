@@ -24,11 +24,11 @@ const exampleMovieDbResponse = {
 };
 
 describe('Poster', () => {
-  it('renders a poster', () => {
+  it('renders a poster with correct label and alt text', () => {
     render(<Poster info={exampleMovieDbResponse} />);
+    const originalTitle = exampleMovieDbResponse.results[0].original_title;
 
-    expect(
-      screen.getByLabelText(exampleMovieDbResponse.results[0].original_title)
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText(originalTitle)).toBeInTheDocument();
+    expect(screen.getByAltText(originalTitle)).toBeInTheDocument();
   });
 });
