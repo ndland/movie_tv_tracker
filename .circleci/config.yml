@@ -7,6 +7,9 @@ jobs:
   build:
     docker:
       - image: cimg/node:5.0.1
+        auth:
+          username: ndland
+          password: $DOCKERHUB_PASSWORD  # or project environment variable reference
     steps:
       - checkout
       - run: yarn build
@@ -21,7 +24,11 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build
+      - build:
+          context:
+            - docker-hub
       - test:
+          context:
+            - docker-hub
           requires:
             - build
