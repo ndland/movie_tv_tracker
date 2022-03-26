@@ -33,7 +33,7 @@ describe('Poster', () => {
     expect(screen.getByAltText(originalTitle)).toBeInTheDocument();
   });
 
-  it("calls the callback when it's clicked", () => {
+  it("calls the onClick callback when it's clicked", () => {
     const onClick = jest.fn();
     render(<Poster info={exampleMovieDbResponse} onClick={onClick} />);
 
@@ -43,5 +43,23 @@ describe('Poster', () => {
     userEvent.click(poster);
 
     expect(onClick).toHaveBeenCalledWith(exampleMovieDbResponse.results[0].id);
+  });
+
+  it('renders the name of the movie', () => {
+    render(<Poster info={exampleMovieDbResponse} />);
+
+    expect(
+      screen.getByText(exampleMovieDbResponse.results[0].title)
+    ).toBeInTheDocument();
+  });
+
+  it('renders the year the movie was made', () => {
+    render(<Poster info={exampleMovieDbResponse} />);
+
+    const year = new Date(exampleMovieDbResponse.results[0].release_date)
+      .getFullYear()
+      .toString();
+
+    expect(screen.getByText(/\(2022\)/i)).toHaveTextContent(year);
   });
 });
