@@ -26,7 +26,7 @@ const exampleMovieDbResponse = {
 
 describe('Poster', () => {
   it('renders a poster with correct label and alt text', () => {
-    render(<Poster info={exampleMovieDbResponse} />);
+    render(<Poster result={exampleMovieDbResponse.results[0]} />);
     const originalTitle = exampleMovieDbResponse.results[0].original_title;
 
     expect(screen.getByLabelText(originalTitle)).toBeInTheDocument();
@@ -35,7 +35,9 @@ describe('Poster', () => {
 
   it("calls the onClick callback when it's clicked", () => {
     const onClick = jest.fn();
-    render(<Poster info={exampleMovieDbResponse} onClick={onClick} />);
+    render(
+      <Poster result={exampleMovieDbResponse.results[0]} onClick={onClick} />
+    );
 
     const originalTitle = exampleMovieDbResponse.results[0].original_title;
     const poster = screen.getByAltText(originalTitle);
@@ -46,7 +48,7 @@ describe('Poster', () => {
   });
 
   it('renders the name of the movie', () => {
-    render(<Poster info={exampleMovieDbResponse} />);
+    render(<Poster result={exampleMovieDbResponse.results[0]} />);
 
     expect(
       screen.getByText(exampleMovieDbResponse.results[0].title)
@@ -54,7 +56,7 @@ describe('Poster', () => {
   });
 
   it('renders the year the movie was made', () => {
-    render(<Poster info={exampleMovieDbResponse} />);
+    render(<Poster result={exampleMovieDbResponse.results[0]} />);
 
     const year = new Date(exampleMovieDbResponse.results[0].release_date)
       .getFullYear()
