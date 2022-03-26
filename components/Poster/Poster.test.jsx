@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Poster from './Poster';
+import userEvent from '@testing-library/user-event';
 
 const exampleMovieDbResponse = {
   results: [
@@ -30,5 +31,17 @@ describe('Poster', () => {
 
     expect(screen.getByLabelText(originalTitle)).toBeInTheDocument();
     expect(screen.getByAltText(originalTitle)).toBeInTheDocument();
+  });
+
+  it("calls the callback when it's clicked", () => {
+    const onClick = jest.fn();
+    render(<Poster info={exampleMovieDbResponse} onClick={onClick} />);
+
+    const originalTitle = exampleMovieDbResponse.results[0].original_title;
+    const poster = screen.getByAltText(originalTitle);
+
+    userEvent.click(poster);
+
+    expect(onClick).toHaveBeenCalledWith(exampleMovieDbResponse.results[0].id);
   });
 });

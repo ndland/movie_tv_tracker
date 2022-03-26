@@ -3,6 +3,7 @@ import Poster from './Poster';
 export default {
   title: 'Components/Poster',
   component: Poster,
+  argTypes: { onClick: { action: 'Clicked with id:' } },
 };
 
 const exampleMovieDbResponse = {
@@ -27,4 +28,8 @@ const exampleMovieDbResponse = {
   ],
 };
 
-export const Default = () => <Poster info={exampleMovieDbResponse} />;
+export const Default = (args) => <Poster {...args} />;
+
+Default.args = {
+  info: exampleMovieDbResponse,
+};
