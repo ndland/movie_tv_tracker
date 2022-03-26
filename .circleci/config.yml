@@ -6,7 +6,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:5.0.1
+      - image: node:16
         auth:
           username: ndland
           password: $DOCKERHUB_PASSWORD  # or project environment variable reference
@@ -15,7 +15,7 @@ jobs:
       - run: yarn build
   test:
     docker:
-      - image: cimg/node:5.0.1
+      - image: node:16
     steps:
       - checkout
       - run: yarn test
