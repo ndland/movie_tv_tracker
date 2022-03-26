@@ -1,3 +1,5 @@
+[![ndland](https://circleci.com/gh/ndland/movie_tv_tracker.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
