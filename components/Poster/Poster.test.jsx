@@ -46,18 +46,4 @@ describe('Poster', () => {
 
     expect(onClick).toHaveBeenCalledWith(exampleMovieDbResponse.results[0].id);
   });
-
-  it('renders the name of the movie', () => {
-    expect(
-      screen.getByText(exampleMovieDbResponse.results[0].title)
-    ).toBeInTheDocument();
-  });
-
-  it('renders the year the movie was made', () => {
-    const year = new Date(
-      exampleMovieDbResponse.results[0].release_date
-    ).getFullYear();
-
-    expect(screen.getByText(/\(2022\)/i)).toHaveTextContent(year);
-  });
 });
