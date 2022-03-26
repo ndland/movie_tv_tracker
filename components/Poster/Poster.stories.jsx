@@ -381,7 +381,7 @@ export const Default = (args) => <Poster {...args} />;
 
 export const MultiplePosters = (args) => {
   return (
-    <div className="grid grid-rows-3 grid-flow-col gap-2">
+    <div className="grid grid-cols-7 gap-2">
       {args.result.map((res) => (
         <Poster key={res.id} result={res} onClick={args.onClick} />
       ))}
