@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Poster = ({ result, onClick }) => {
   return (
-    <div className="flex flex-col" onClick={() => onClick(result.id)}>
+    <div className="flex flex-col" onClick={() => onClick(result)}>
       <div className="relative h-64">
         <Image
           alt={`${result.original_title}`}

@@ -44,6 +44,6 @@ describe('Poster', () => {
   it("calls the onClick callback when it's clicked", () => {
     userEvent.click(screen.getByAltText(originalTitle));
 
-    expect(onClick).toHaveBeenCalledWith(exampleMovieDbResponse.results[0].id);
+    expect(onClick).toHaveBeenCalledWith(exampleMovieDbResponse.results[0]);
   });
 });
