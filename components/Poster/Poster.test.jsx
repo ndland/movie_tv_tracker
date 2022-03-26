@@ -24,43 +24,39 @@ const exampleMovieDbResponse = {
   ],
 };
 
-describe('Poster', () => {
-  it('renders a poster with correct label and alt text', () => {
-    render(<Poster result={exampleMovieDbResponse.results[0]} />);
-    const originalTitle = exampleMovieDbResponse.results[0].original_title;
+let onClick;
+let originalTitle;
 
+describe('Poster', () => {
+  beforeEach(() => {
+    onClick = jest.fn();
+    originalTitle = exampleMovieDbResponse.results[0].original_title;
+    render(
+      <Poster result={exampleMovieDbResponse.results[0]} onClick={onClick} />
+    );
+  });
+
+  it('renders a poster with correct label and alt text', () => {
     expect(screen.getByLabelText(originalTitle)).toBeInTheDocument();
     expect(screen.getByAltText(originalTitle)).toBeInTheDocument();
   });
 
   it("calls the onClick callback when it's clicked", () => {
-    const onClick = jest.fn();
-    render(
-      <Poster result={exampleMovieDbResponse.results[0]} onClick={onClick} />
-    );
-
-    const originalTitle = exampleMovieDbResponse.results[0].original_title;
-    const poster = screen.getByAltText(originalTitle);
-
-    userEvent.click(poster);
+    userEvent.click(screen.getByAltText(originalTitle));
 
     expect(onClick).toHaveBeenCalledWith(exampleMovieDbResponse.results[0].id);
   });
 
   it('renders the name of the movie', () => {
-    render(<Poster result={exampleMovieDbResponse.results[0]} />);
-
     expect(
       screen.getByText(exampleMovieDbResponse.results[0].title)
     ).toBeInTheDocument();
   });
 
   it('renders the year the movie was made', () => {
-    render(<Poster result={exampleMovieDbResponse.results[0]} />);
-
-    const year = new Date(exampleMovieDbResponse.results[0].release_date)
-      .getFullYear()
-      .toString();
+    const year = new Date(
+      exampleMovieDbResponse.results[0].release_date
+    ).getFullYear();
 
     expect(screen.getByText(/\(2022\)/i)).toHaveTextContent(year);
   });
