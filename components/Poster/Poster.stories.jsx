@@ -377,11 +377,15 @@ const multipleMovieResponse = {
   total_results: 657649,
 };
 
-export const Default = (args) => <Poster {...args} />;
+export const Default = (args) => (
+  <div className="w-48">
+    <Poster {...args} />
+  </div>
+);
 
 export const MultiplePosters = (args) => {
   return (
-    <div className="grid grid-cols-7 gap-2">
+    <div className="grid grid-cols-7 gap-3 h-screen">
       {args.result.map((res) => (
         <Poster key={res.id} result={res} onClick={args.onClick} />
       ))}
@@ -391,7 +395,7 @@ export const MultiplePosters = (args) => {
 
 Default.args = {
   onClick: action('onClick called with id:'),
-  result: exampleMovieDbResponse.results[0],
+  result: multipleMovieResponse.results[0],
 };
 
 MultiplePosters.args = {
