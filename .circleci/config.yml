@@ -24,6 +24,9 @@ jobs:
           name: Build app
 # Orchestrate our job run sequence
 workflows:
+  on_commit:
+    jobs:
+      - build_and_test
   build_and_test:
     jobs:
       - build_and_test:
