@@ -39,6 +39,8 @@ workflows:
       - build:
           context:
             - docker-hub
+          requires:
+            - install
       - test:
           context:
             - docker-hub
