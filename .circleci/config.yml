@@ -4,6 +4,15 @@ version: 2.1
 
 # Define the jobs we want to run for this project
 jobs:
+  install:
+    docker:
+      - image: node:16
+        auth:
+          username: ndland
+          password: $DOCKERHUB_PASSWORD  # or project environment variable reference
+    steps:
+      - checkout
+      - run: yarn install
   build:
     docker:
       - image: node:16
@@ -24,6 +33,9 @@ jobs:
 workflows:
   build_and_test:
     jobs:
+      - install:
+          context:
+            - docker-hub
       - build:
           context:
             - docker-hub
