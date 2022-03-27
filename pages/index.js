@@ -1,14 +1,31 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
 import SocialButton from '../components/SocialButton/SocialButton';
 import Header from '../components/Header/Header';
+import Poster from '../components/Poster/Poster';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MultipleMovieResponse } from '../components/Poster/Poster.stories';
 
 export default function Home() {
   const { data: session } = useSession();
 
+  const onClick = (e) => {
+    console.info('clicked the following: ', e);
+  };
+
   if (session) {
-    return <Header onClick={() => signOut()} session={session} />;
+    return (
+      <>
+        <Header onClick={() => signOut()} />
+        <div className="container mx-auto mt-4">
+          <div className="grid grid-cols-7 gap-3 h-screen">
+            {MultipleMovieResponse.results.map((res) => (
+              <Poster key={res.id} result={res} onClick={onClick} />
+            ))}
+          </div>
+        </div>
+      </>
+    );
   }
 
   return (

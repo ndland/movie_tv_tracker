@@ -6,7 +6,7 @@ export default {
   component: Poster,
 };
 
-const multipleMovieResponse = {
+export const MultipleMovieResponse = {
   page: 1,
   results: [
     {
@@ -373,10 +373,10 @@ export const MultiplePosters = (args) => {
 
 Default.args = {
   onClick: action('onClick called with id:'),
-  result: multipleMovieResponse.results[0],
+  result: MultipleMovieResponse.results[0],
 };
 
 MultiplePosters.args = {
   onClick: action('onClick called with id:'),
-  result: multipleMovieResponse.results,
+  result: MultipleMovieResponse.results,
 };
