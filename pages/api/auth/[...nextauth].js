@@ -22,5 +22,5 @@ export default NextAuth({
       log.debug(code, metadata)
     }
   },
-  secret: process.env.SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 });
