@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth';
+import log from 'loglevel';
 import GithubProvider from 'next-auth/providers/github';
 
 export default NextAuth({
@@ -10,6 +11,16 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
-
+  logger: {
+    error(code, metadata) {
+      log.error(code, metadata)
+    },
+    warn(code) {
+      log.warn(code)
+    },
+    debug(code, metadata) {
+      log.debug(code, metadata)
+    }
+  },
   secret: process.env.SECRET,
 });
