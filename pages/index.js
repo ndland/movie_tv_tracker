@@ -8,7 +8,8 @@ import { MultipleMovieResponse } from '../components/Poster/Poster.stories';
 
 export default function Home() {
   const { data: session } = useSession();
-  console.log('secret', process.env.NEXT_PUBLIC_SECRET);
+    console.info('Github ID: ', process.env.GITHUB_ID);
+    console.info('Github Client Secret: ', process.env.GITHUB_SECRET);
 
   const onClick = (e) => {
     console.info('clicked the following: ', e);
